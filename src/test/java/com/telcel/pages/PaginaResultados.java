@@ -12,10 +12,10 @@ public class PaginaResultados {
     public WebDriver driver;
     public WebDriverWait wait;
 
-    public PaginaResultados(WebDriver we){
+    public PaginaResultados(WebDriver we) {
         this.driver = we;
         wait = new WebDriverWait(driver, 15);
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
 
     @FindBy(css=".comp-telcel-mosaico-equipos")
@@ -24,7 +24,7 @@ public class PaginaResultados {
     @FindBy(css="p.telcel-mosaico-equipos-marca")
     WebElement marca_ModeloCelular;
 
-    @FindBy(css="p.telcel-mosaico-equipos-nombre-equipo")
+    @FindBy( css="p.telcel-mosaico-equipos-nombre-equipo")
     WebElement nombreCelular;
 
     @FindBy(css="div.ng-scope > p.telcel-mosaico-equipos-precio")
@@ -33,20 +33,20 @@ public class PaginaResultados {
     @FindBy(css=".telcel-mosaico-equipos-capacidad-numero")
     WebElement capacidadCelular;
 
-
-    public void verificarPagina(){
-
-    }
-
-    public void verificarResultados(){
+    public void verificarPagina() {
 
     }
 
-    public Celular capturarInformacionCelular(int numCelular){
+    public void verificarResultados() {
+
+    }
+
+    public Celular capturarInformacionCelular(int numCelular) {
         return null;
     }
 
-    public void seleccionarCelular(int numCelular){
+    public void seleccionarCelular(int numCelular) {
 
     }
+
 }

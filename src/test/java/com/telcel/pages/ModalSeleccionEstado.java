@@ -2,6 +2,9 @@ package com.telcel.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ModalSeleccionEstado {
@@ -9,22 +12,36 @@ public class ModalSeleccionEstado {
     public WebDriver driver;
     public WebDriverWait wait;
 
-    public ModalSeleccionEstado(WebDriver we){
+    public ModalSeleccionEstado(WebDriver we) {
         this.driver = we;
-        wait = new WebDriverWait(driver, 15);
+        wait = new WebDriverWait(driver, 50);
+        PageFactory.initElements(driver, this);
     }
 
-    WebElement seleccionaEstadoDropdown;  //css=".chosen-single"
-    WebElement campoBusquedaEstad; //css=".chosen-search > input"
-    WebElement ligaEstado;  //css=".chosen-results .active-result"
-    WebElement botonEntrar; //css="#entrarPerfilador"
+    @FindBy(css=".modal .chosen-single > span")
+    WebElement seleccionaEstadoDropdown; //
 
+    @FindBy(css=".chosen-search > input")
+    WebElement campoBusquedaEstado; //
 
-    public void verificarPagina(){
+    @FindBy(css=".chosen-results .active-result")
+    WebElement ligaEstado; //
+
+    @FindBy(css="#entrarPerfilador")
+    WebElement botonEntrar; //
+
+    public void verificarPagina() {
+        wait.until(ExpectedConditions.elementToBeClickable(seleccionaEstadoDropdown));
+
+    }
+    public void seleccionarEstado(String estado) {
+        seleccionaEstadoDropdown.click();
+        wait.until(ExpectedConditions.visibilityOf(campoBusquedaEstado));
+        campoBusquedaEstado.sendKeys(estado);
+        wait.until(ExpectedConditions.visibilityOf(ligaEstado));
+        ligaEstado.click();
+        botonEntrar.click();
 
     }
 
-    public void seleccionarEstado(String estado){
-
-    }
 }
